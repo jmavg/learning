@@ -4,9 +4,6 @@
 # to_sort = sys.argv[1]
 
 
-from tempfile import tempdir
-
-
 list1 = [5,1,3,6,5,4,200,7,50]
 expectation = sorted(list1)
 list2 = []
@@ -14,19 +11,21 @@ list2 = []
 
 def sorter(to_sort) -> list:
 
-  temp = int
+  holder = int
 
-  for i in range(len(to_sort)):
+  while len(to_sort) > 0:
 
-    for index, number in enumerate(to_sort):
+    holder = to_sort[0]
 
-      if to_sort[i] > number:
+    for number in to_sort:
 
-        temp = number
-        i = index
-    to_sort.pop(temp)
+      if holder > number:
 
-    list2.append(temp)
+        holder = number
+
+    to_sort.pop(to_sort.index(holder))
+
+    list2.append(holder)
 
   return list2
 
